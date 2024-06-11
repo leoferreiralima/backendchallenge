@@ -3,18 +3,12 @@ import { Image } from "astro:assets";
 import siteConfig from "../data/site-config";
 ---
 
-<header
-  class="w-full max-h-20 px-6 py-5 mb-8 border-b border-b-zinc-600 border-opacity-30"
->
-  <div class="max-w-5xl w-full h-full mx-auto flex items-center">
+<header class="w-full max-h-20 border-b border-b-zinc-600 border-opacity-30">
+  <div class="max-w-5xl w-full h-full mx-auto px-6 py-6 flex items-center">
     {
       siteConfig.logo && siteConfig.logo?.src ? (
         <a href="/">
-          <Image
-            src={siteConfig.logo.src}
-            alt={siteConfig.logo.alt || ""}
-            class="max-h-12"
-          />
+          <Image src={siteConfig.logo.src} alt={siteConfig.logo.alt || ""} />
         </a>
       ) : (
         <a href="/">{siteConfig.title}</a>

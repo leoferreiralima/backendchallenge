@@ -1,5 +1,7 @@
 import type { ImageMetadata } from 'astro';
 
+import logo from '@/assets/logo-white.svg';
+
 export type Image = {
     src: ImageMetadata;
     alt: string;
@@ -16,6 +18,10 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     title: 'Backend Drops',
     description: 'Desafios semanais de backend para se manter atualizado!',
+    logo: {
+        src: logo,
+        alt: 'Backend Drops'
+    },
 };
 
 export default siteConfig;
