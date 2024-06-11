@@ -1,8 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+import { getAllDrops } from "@/services/drops";
+
+const [latestDrop, ...drops] = await getAllDrops();
 ---
 
 <Layout>
-  <h1>Backend Drops</h1>
+  <section>
+    <p>Latest Drop</p>
+    <h1>
+      {latestDrop.data.order}. {latestDrop.data.title}
+    </h1>
+  </section>
+  <section class="mt-10">
+    <ul>
+      {
+        drops.length > 0 &&
+          drops.map((drop) => (
+            <li>
+              {drop.data.order}. {drop.data.title}
+            </li>
+          ))
+      }
+    </ul>
+  </section>
 </Layout>
