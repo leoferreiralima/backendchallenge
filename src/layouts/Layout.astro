@@ -1,7 +1,10 @@
 ---
 import "@/styles/base.css";
 
+import "@fontsource/roboto";
+
 import BaseHead, { type Props as HeadProps } from "@/components/BaseHead.astro";
+import Header from "@/components/Header.astro";
 
 export type Props = HeadProps;
 
@@ -9,11 +12,19 @@ const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" class="antialiased break-words dark">
   <head>
     <BaseHead {...props} />
   </head>
   <body>
-    <slot />
+    <main
+      class="bg-zinc-900 min-h-screen text-white flex flex-col items-center"
+    >
+      <Header />
+
+      <div class="w-full max-w-5xl">
+        <slot />
+      </div>
+    </main>
   </body>
 </html>
