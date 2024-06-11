@@ -12,14 +12,15 @@ const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-br" class="antialiased break-words dark min-h-screen">
+<html
+  lang="pt-br"
+  class="antialiased break-words dark text-zinc-300 min-h-screen"
+>
   <head>
     <BaseHead {...props} />
   </head>
   <body class="min-h-screen">
-    <main
-      class="bg-zinc-900 min-h-screen text-white grid grid-rows-[auto_1fr_auto]"
-    >
+    <main class="bg-zinc-900 min-h-screen grid grid-rows-[auto_1fr_auto]">
       <Header />
 
       <div class="w-full max-w-5xl px-6 mx-auto my-10">

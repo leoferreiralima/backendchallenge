@@ -1,6 +1,6 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 
 import { getAllDrops } from "@/services/drops";
 
@@ -8,11 +8,23 @@ const [latestDrop, ...drops] = await getAllDrops();
 ---
 
 <Layout>
-  <section>
-    <p>Latest Drop</p>
-    <h1>
-      {latestDrop.data.order}. {latestDrop.data.title}
-    </h1>
+  <section class="bg-zinc-800 rounded">
+    <a href={`/drops/${latestDrop.slug}`} class="flex items-center gap-4">
+      {
+        latestDrop.data.heroImage && (
+          <Image
+            src={latestDrop.data.heroImage.src}
+            alt={latestDrop.data.heroImage.alt}
+            class="rounded w-1/2"
+          />
+        )
+      }
+      <div class="flex flex-col gap-4">
+        <strong class="text-neutral-400">#Drop {latestDrop.data.order}</strong>
+        <h1 class="text-4xl">{latestDrop.data.title}</h1>
+        <p>{latestDrop.data.description}</p>
+      </div>
+    </a>
   </section>
   <section class="mt-10">
     <ul>

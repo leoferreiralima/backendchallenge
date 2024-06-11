@@ -7,7 +7,7 @@ const seoSchema = ({ image }: SchemaContext) => (
         image: z
             .object({
                 src: image(),
-                alt: z.string().optional()
+                alt: z.string()
             })
             .optional(),
         pageType: z.enum(['website', 'article']).default('website')
@@ -24,6 +24,10 @@ const drops = defineCollection({
             description: z.string().optional(),
             status: z.enum(['draft', 'published']).default('draft'),
             publishedAt: z.coerce.date(),
+            heroImage: z.object({
+                src: context.image(),
+                alt: z.string()
+            }).optional(),
             tags: z.array(z.string()).default([]),
             seo: seoSchema(context).optional()
         })
